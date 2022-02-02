@@ -16,7 +16,7 @@ local Translations = {
     menu = {
         ['locksmith'] = 'locksmith',
         ['crafting_keys_for_x'] = 'Crafting keys for %{vehicle}:',
-		['crafting_keys_info'] = 'Plate: ${plate}<br>Price: $%{price}',
+		['crafting_keys_info'] = 'Plate: %{plate}<br>Price: $%{price}',
         ['making_car_keys'] = 'Making Car Keys',
     }
 }
