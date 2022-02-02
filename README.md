@@ -63,6 +63,10 @@ Add to qb-core\shared\items.lua:
 ```
 if exports['MojiaVehicleKeys']:CheckHasKey(plate) then
 ```
+- Lock/Unlock Vehicles:
+```
+'MojiaVehicleKeys:client:lockVehicle'
+```
 - Change owner:
 ```
 TriggerClientEvent('MojiaVehicleKeys:client:AddVehicleKey',target, plate, model)
