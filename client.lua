@@ -298,6 +298,8 @@ RegisterNetEvent('MojiaVehicleKeys:client:Engine', function()
 		local plate = QBCore.Functions.GetPlate(veh)
 		if CheckHasKey(plate) then
 			IsEngineOn = not IsEngineOn
+		else
+			QBCore.Functions.Notify('You don\'t have the keys of the vehicle..', 'error')
 		end
 	end
 end)
