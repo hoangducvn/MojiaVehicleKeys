@@ -69,6 +69,10 @@ if exports['MojiaVehicleKeys']:CheckHasKey(plate) then
 ```
 'MojiaVehicleKeys:client:lockVehicle'
 ```
+- Add new key:
+```
+TriggerServerEvent('MojiaVehicleKeys:server:AddVehicleKey', plate, vehicle)
+```
 - Change owner:
 ```
 TriggerClientEvent('MojiaVehicleKeys:client:AddVehicleKey',target, plate, model)
