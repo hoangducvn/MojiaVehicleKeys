@@ -34,8 +34,8 @@ Add item info to qb-inventory\html\js\app.js
 				'<p>' + itemData.info.vehname + '</p>'
 			);
             $(".item-info-description").html(
-				'<p>' + MultiLang.owner + ': ' + itemData.info.owner +
-				'</p><p>' + MultiLang.license_plate + ': ' + itemData.info.plate +
+				'<p>Owner : ' + itemData.info.owner +
+				'</p><p>Plate: ' + itemData.info.plate +
 				'</p>'
 			);
         }
