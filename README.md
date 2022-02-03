@@ -9,6 +9,8 @@
 ## Features:
 - The vehicle key will now act as an item
 - Additional vehicle keys can be purchased at an adjustable price to give to friends (default 10% of vehicle value)
+- When you sell your vehicle to someone else, all the keys to the vehicle that were not created by the new owner will be deleted
+
 ## Installation:
 #### qb-vehicleshop:
 - Edit qb-vehicleshop\client.lua:
