@@ -1,7 +1,8 @@
 local Translations = {
     error = {
         ['someone_called_the_police'] = 'Someone called the police!',
-        ['not_enough_money'] = 'Not enough money!'
+        ['not_enough_money'] = 'Not enough money!',
+        ['you_dont_have_the_keys_of_the_vehicle'] = 'You don\'t have the keys of the vehicle..'
     },
     success = {
         ['successful_hotwire'] = 'Successful hotwire!',

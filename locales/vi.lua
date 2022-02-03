@@ -1,7 +1,8 @@
 local Translations = {
     error = {
         ['someone_called_the_police'] = 'Có ai đó đã gọi cho cảnh sát!',
-        ['not_enough_money'] = 'Bạn không có đủ tiền'
+        ['not_enough_money'] = 'Bạn không có đủ tiền',
+        ['you_dont_have_the_keys_of_the_vehicle'] = 'Bạn không có chìa khóa của chiếc xe này...'
     },
     success = {
         ['successful_hotwire'] = 'Đấu nóng thành công!',

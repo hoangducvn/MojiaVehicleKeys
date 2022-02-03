@@ -25,34 +25,32 @@ function AddVehicleKey(plate, model)
 	info.citizenid = Player.PlayerData.citizenid
 	Player.Functions.AddItem('vehiclekey', 1, nil, info)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['vehiclekey'], 'add')
-	TriggerClientEvent('MojiaVehicleKeys:client:DeleteVehicleKey', -1, plate)
 end
 
 RegisterNetEvent('MojiaVehicleKeys:server:AddVehicleKey', function(plate, model)
 	AddVehicleKey(plate, model)
 end)
 
-RegisterNetEvent('MojiaVehicleKeys:server:DeleteVehicleKey', function(plate)
+RegisterNetEvent('MojiaVehicleKeys:server:DeleteVehicleKey', function()
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player then
 		local items = Player.Functions.GetItemsByName('vehiclekey')
 		if items then
 			for _, v in pairs(items) do
-				if v.info.plate == plate then
-					MySQL.Async.fetchAll('SELECT * FROM player_vehicles WHERE plate = ? AND citizenid = ?',
-						{
-							v.info.plate,
-							v.info.citizenid
-						}, function(result)
-						if result then
-							
-						else
-							Player.Functions.RemoveItem(v.name, 1, v.slot)
-							TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[v.name], 'remove')
+				MySQL.Async.fetchAll('SELECT * FROM player_vehicles WHERE plate = ?',
+					{
+						v.info.plate
+					}, function(result)
+					if result then
+						for k, v1 in pairs(result) do
+							if v.info.citizenid ~= v1.citizenid then
+								Player.Functions.RemoveItem(v.name, 1, v.slot)
+								TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[v.name], 'remove')
+							end
 						end
-					end)
-				end
+					end
+				end)
 			end
 		end
     end

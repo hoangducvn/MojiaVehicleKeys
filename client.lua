@@ -279,10 +279,6 @@ RegisterNetEvent('MojiaVehicleKeys:client:AddVehicleKey', function(plate, model)
 	TriggerServerEvent('MojiaVehicleKeys:server:AddVehicleKey', plate, model)
 end)
 
-RegisterNetEvent('MojiaVehicleKeys:client:DeleteVehicleKey', function(plate)
-	TriggerServerEvent('MojiaVehicleKeys:server:DeleteVehicleKey', plate)
-end)
-
 RegisterNetEvent('MojiaVehicleKeys:client:CreateVehiclekey', function(data)
 	TriggerServerEvent('MojiaVehicleKeys:server:CreateVehiclekey', data)
 end)
@@ -298,6 +294,8 @@ RegisterNetEvent('MojiaVehicleKeys:client:Engine', function()
 		local plate = QBCore.Functions.GetPlate(veh)
 		if CheckHasKey(plate) then
 			IsEngineOn = not IsEngineOn
+		else
+			QBCore.Functions.Notify('You don\'t have the keys of the vehicle..', 'error')
 		end
 	end
 end)
@@ -368,9 +366,16 @@ CreateThread(function() --Reload Vehicle Key
 	end
 end)
 
+--Thread:
+CreateThread(function() --Delete unauthorized vehicle keys
+    while true do        
+        TriggerServerEvent('MojiaVehicleKeys:server:DeleteVehicleKey')
+		Wait(1000)
+	end
+end)
+
 CreateThread(function()
-    while true do
-        Wait(0)
+    while true do        
         local ped = PlayerPedId()
 		if IsPedInAnyVehicle(ped, false) then
 			if GetPedInVehicleSeat(GetVehiclePedIsIn(ped, false), 0) == ped then
@@ -379,6 +384,7 @@ CreateThread(function()
 				end
 			end
 		end
+		Wait(1000)
 	end
 end)
 
@@ -412,7 +418,7 @@ CreateThread(function() --Lock all vehicle on the map
                 SetVehicleDoorsLocked(veh, 2)
             end
         end
-        Wait(1000)
+        Wait(500)
     end
 end)
 
@@ -446,7 +452,7 @@ CreateThread(function()
 			local veh1 = GetVehiclePedIsTryingToEnter(ped)
 			IsEngineOn = GetIsVehicleEngineRunning(veh1)
 		end
-		Wait(0)
+		Wait(1000)
     end
 end)
 
