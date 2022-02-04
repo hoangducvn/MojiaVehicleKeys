@@ -61,7 +61,17 @@ Add to qb-core\shared\items.lua:
 		['description'] = 'This is a car key, take good care of it, if you lose it you probably won\'t be able to use your car'
 	},
 ```
-
+#### qb-hud:
+- Change qb-hud\client.lua
+```
+RegisterCommand('+engine', function()
+   TriggerEvent('MojiaVehicleKeys:client:Engine')
+end)
+```
+do the same thing with Lock/Unlock event
+```
+TriggerEvent('MojiaVehicleKeys:client:lockVehicle')
+```
 ### Event:
 - Check vehicles key:
 ```
