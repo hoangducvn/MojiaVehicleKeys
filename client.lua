@@ -275,12 +275,20 @@ RegisterNetEvent('MojiaVehicleKeys:client:OpenVehiclesList', function()
 	end)
 end)
 
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() -- Event when player has successfully loaded
+    TriggerEvent('MojiaVehicleKeys:client:DeleteVehicleKey') --Delete unauthorized vehicle keys
+end)
+
 RegisterNetEvent('MojiaVehicleKeys:client:AddVehicleKey', function(plate, model)
 	TriggerServerEvent('MojiaVehicleKeys:server:AddVehicleKey', plate, model)
 end)
 
 RegisterNetEvent('MojiaVehicleKeys:client:CreateVehiclekey', function(data)
 	TriggerServerEvent('MojiaVehicleKeys:server:CreateVehiclekey', data)
+end)
+
+RegisterNetEvent('MojiaVehicleKeys:client:DeleteVehicleKey', function() --Delete unauthorized vehicle keys
+    TriggerServerEvent('MojiaVehicleKeys:server:DeleteVehicleKey')
 end)
 
 RegisterNetEvent('vehiclekeys:client:SetOwner', function(plate) --Event of qb-vehiclekeys
@@ -295,7 +303,7 @@ RegisterNetEvent('MojiaVehicleKeys:client:Engine', function()
 		if CheckHasKey(plate) then
 			IsEngineOn = not IsEngineOn
 		else
-			QBCore.Functions.Notify('You don\'t have the keys of the vehicle..', 'error')
+			QBCore.Functions.Notify(Lang:t('error.you_dont_have_the_keys_of_the_vehicle'), 'error')
 		end
 	end
 end)
@@ -347,7 +355,7 @@ RegisterNetEvent('MojiaVehicleKeys:client:lockVehicle',function()
 				end
 			end
 		else
-			QBCore.Functions.Notify('You don\'t have the keys of the vehicle..', 'error')
+			QBCore.Functions.Notify(Lang:t('error.you_dont_have_the_keys_of_the_vehicle'), 'error')
 		end
     end
 end)
@@ -362,14 +370,6 @@ CreateThread(function() --Reload Vehicle Key
         QBCore.Functions.TriggerCallback('MojiaVehicleKeys:server:reloadVehicleKey', function(keys)
 			keylist = keys
 		end)
-		Wait(1000)
-	end
-end)
-
---Thread:
-CreateThread(function() --Delete unauthorized vehicle keys
-    while true do        
-        TriggerServerEvent('MojiaVehicleKeys:server:DeleteVehicleKey')
 		Wait(1000)
 	end
 end)

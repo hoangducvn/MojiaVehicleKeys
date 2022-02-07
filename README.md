@@ -77,7 +77,7 @@ if exports['MojiaVehicleKeys']:CheckHasKey(plate) then
 ```
 - Add new key:
 ```
-TriggerServerEvent('MojiaVehicleKeys:server:AddVehicleKey', plate, vehicle)
+TriggerServerEvent('MojiaVehicleKeys:server:AddVehicleKey', plate, model)
 ```
 - Change owner:
 ```

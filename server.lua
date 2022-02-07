@@ -25,6 +25,7 @@ function AddVehicleKey(plate, model)
 	info.citizenid = Player.PlayerData.citizenid
 	Player.Functions.AddItem('vehiclekey', 1, nil, info)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['vehiclekey'], 'add')
+	TriggerClientEvent('MojiaVehicleKeys:client:DeleteVehicleKey', -1) --Delete unauthorized vehicle keys
 end
 
 RegisterNetEvent('MojiaVehicleKeys:server:AddVehicleKey', function(plate, model)
