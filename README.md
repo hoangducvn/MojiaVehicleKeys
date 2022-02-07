@@ -61,7 +61,17 @@ Add to qb-core\shared\items.lua:
 		['description'] = 'This is a car key, take good care of it, if you lose it you probably won\'t be able to use your car'
 	},
 ```
-
+#### qb-hud:
+- Change qb-hud\client.lua
+```
+RegisterCommand('+engine', function()
+   TriggerEvent('MojiaVehicleKeys:client:Engine')
+end)
+```
+do the same thing with Lock/Unlock event
+```
+TriggerEvent('MojiaVehicleKeys:client:lockVehicle')
+```
 ### Event:
 - Check vehicles key:
 ```
@@ -83,3 +93,8 @@ TriggerServerEvent('MojiaVehicleKeys:server:AddVehicleKey', plate, model)
 ```
 TriggerClientEvent('MojiaVehicleKeys:client:AddVehicleKey',target, plate, model)
 ```
+### Note:
+- This script is completely free for community, it is strictly forbidden to use this script for commercial purposes.
+- If you want to offer me a cup of coffee, you can donate to me through: [https://www.buymeacoffee.com/hoangducdt](https://www.buymeacoffee.com/hoangducdt)
+- Follow me on [My Github](https://github.com/hoangducdt) or subscribe to [My Youtube Channel](https://www.youtube.com/channel/UCFIsOgj9zvEWAwFTPRT5mbQ) for latest updates
+- My Discord: ✯✯✯✯✯#8386
