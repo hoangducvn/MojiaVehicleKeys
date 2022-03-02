@@ -20,7 +20,10 @@ function AddVehicleKey(plate, model)
 	local Player = QBCore.Functions.GetPlayer(src)
 	local info = {}
 	info.owner = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
-	info.vehname = QBCore.Shared.Vehicles[model].name
+	info.vehname = model
+	if QBCore.Shared.Vehicles[model] then
+		info.vehname = QBCore.Shared.Vehicles[model].name
+	end
 	info.plate = plate
 	info.citizenid = Player.PlayerData.citizenid
 	Player.Functions.AddItem('vehiclekey', 1, nil, info)
