@@ -9,6 +9,8 @@ local AlertSend = false
 
 local function HasKey(plate)
 	local has = false
+	TriggerEvent('MojiaVehicleKeys:client:updateVehicleKey')
+	Wait(100)
 	for _, v in pairs(keylist) do
 		if plate == v then
 			has = true
@@ -239,6 +241,14 @@ local function loadAnimDict(dict)
 end
 
 --Event:
+RegisterNetEvent('MojiaVehicleKeys:client:updateVehicleKey', function()
+	QBCore.Functions.TriggerCallback('MojiaVehicleKeys:server:reloadVehicleKey', function(keys)
+		if keys then
+			keylist = keys
+		end
+	end)
+end)
+
 RegisterNetEvent('MojiaVehicleKeys:client:OpenVehiclesList', function()
 	QBCore.Functions.TriggerCallback('MojiaGarages:server:GetUserVehicles', function(result)
 		if result then
@@ -365,14 +375,6 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
 end)
 
 --Thread:
-CreateThread(function() --Reload Vehicle Key
-    while true do        
-        QBCore.Functions.TriggerCallback('MojiaVehicleKeys:server:reloadVehicleKey', function(keys)
-			keylist = keys
-		end)
-		Wait(1000)
-	end
-end)
 
 CreateThread(function()
     while true do        
