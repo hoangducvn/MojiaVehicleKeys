@@ -98,6 +98,9 @@ TriggerClientEvent('MojiaVehicleKeys:client:AddVehicleKey',target, plate, model)
 - [driverschool](https://github.com/hoangducdt/driverschool) -Best driving school for qb-core framework
 ## Note:
 - This script is completely free for community, it is strictly forbidden to use this script for commercial purposes.
-- If you want to offer me a cup of coffee, you can donate to me through: [https://www.buymeacoffee.com/hoangducdt](https://www.buymeacoffee.com/hoangducdt)
+- If you want to offer me a cup of coffee, you can donate to me through:
+    [https://www.buymeacoffee.com/hoangducdt](https://www.buymeacoffee.com/hoangducdt)
+    or [paypal.me/hoangducdt](paypal.me/hoangducdt)
 - Follow me on [My Github](https://github.com/hoangducdt) or subscribe to [My Youtube Channel](https://www.youtube.com/channel/UCFIsOgj9zvEWAwFTPRT5mbQ) for latest updates
 - My Discord: ✯✯✯✯✯#8386
+- My Discord Channel: [https://discord.gg/hD3EFzpjfq](https://discord.gg/hD3EFzpjfq)
